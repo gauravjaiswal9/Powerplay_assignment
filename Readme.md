@@ -261,11 +261,28 @@ curl -X DELETE http://localhost:4000/reservations/5e163948-cae5-46e0-8b9e-a42f75
 
 ## 🧠 Technical Decisions
 
-- **Backend:** Node.js + Express for REST APIs.
-- **Database:** MongoDB stores events and reservations.
-- **Frontend:** React (Vite) for fast UI.
-- **Concurrency:** Optimistic locking using the `version` field. Updates use a `version` match and increment (`$inc: { version: 1 }`) to ensure safe concurrent updates.
-- **IDs:** Reservations use UUIDs (v4) so they are unique across systems.
+- Backend: Built using Node.js and Express.js to handle RESTful APIs with a modular architecture (routes, controllers, models, and middleware separated for scalability).
+
+- Database: MongoDB is used to store both event and reservation data. It provides flexibility in schema design and supports atomic updates using operators like $inc, which are crucial for concurrency-safe seat management.
+
+- Frontend: A minimal React (Vite) interface is implemented to visualize event details, reservations, and real-time seat updates. It uses Axios to interact with backend APIs.
+
+- Concurrency:
+Implemented Optimistic Locking using a version field in the Event model.
+Each document includes a version counter that increments on every successful update.
+When a seat reservation or cancellation is made:
+
+The current event is fetched with its version.
+
+The update query includes a version match condition.
+
+If the version has changed (another user updated it concurrently), the update fails gracefully — preventing race conditions and overbooking.
+
+This approach ensures data integrity, atomicity, and safe concurrent seat updates even under high parallel API requests.
+
+- IDs: Each reservation is identified using UUID v4, ensuring globally unique IDs across systems — avoiding collisions even when multiple users create reservations simultaneously.
+
+---
 
 ## ✅ Assumptions
 
