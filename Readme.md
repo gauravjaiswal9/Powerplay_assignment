@@ -272,13 +272,13 @@ Implemented Optimistic Locking using a version field in the Event model.
 Each document includes a version counter that increments on every successful update.
 When a seat reservation or cancellation is made:
 
-The current event is fetched with its version.
+--The current event is fetched with its version.
 
-The update query includes a version match condition.
+--The update query includes a version match condition.
 
-If the version has changed (another user updated it concurrently), the update fails gracefully — preventing race conditions and overbooking.
+--If the version has changed (another user updated it concurrently), the update fails gracefully — preventing race conditions and overbooking.
 
-This approach ensures data integrity, atomicity, and safe concurrent seat updates even under high parallel API requests.
+--This approach ensures data integrity, atomicity, and safe concurrent seat updates even under high parallel API requests.
 
 - IDs: Each reservation is identified using UUID v4, ensuring globally unique IDs across systems — avoiding collisions even when multiple users create reservations simultaneously.
 
