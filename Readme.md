@@ -5,6 +5,11 @@ It supports **event creation, seat reservations, cancellations**, and **concurre
 
 ---
 
+## 🌍 Live Link  
+
+- **Backend (Render):** [Backend](https://powerplay-assignment.onrender.com)  
+
+---
 ## 📦 Project Structure
 
 ```
