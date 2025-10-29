@@ -312,5 +312,4 @@ npm run build  # build for production
 ## ✨ Author
 **Gaurav Kumar Jaiswal**  
 B.Tech, Electronics and Communication Engineering  
-Indian Institute of Information Technology, Nagpur  
-GitHub: https://github.com/GauravKJaiswal
+Indian Institute of Information Technology, Nagpur 
